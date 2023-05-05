@@ -1,45 +1,33 @@
 import { Card, Grid, Text } from "@nextui-org/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function ShowReview() {
-    return (
-        <Grid.Container gap={2}>
-            <Grid xs={4}>
-                <Card>
-                    <Card.Body>
-                        <Text>Default card. (shadow)</Text>
-                    </Card.Body>
-                </Card>
-            </Grid>
-            <Grid xs={4}>
-                <Card>
-                    <Card.Body>
-                        <Text>Default card. (shadow)</Text>
-                    </Card.Body>
-                </Card>
-            </Grid>
-            <Grid xs={4}>
-                <Card>
-                    <Card.Body>
-                        <Text>Default card. (shadow)</Text>
-                    </Card.Body>
-                </Card>
-            </Grid>
-            <Grid xs={4}>
-                <Card>
-                    <Card.Body>
-                        <Text>Default card. (shadow)</Text>
-                    </Card.Body>
-                </Card>
-            </Grid>
-            <Grid xs={4}>
-                <Card>
-                    <Card.Body>
-                        <Text>Default card. (shadow)</Text>
-                    </Card.Body>
-                </Card>
-            </Grid>
+export default function ShowReview({ selected, items, setItems }) {
+  useEffect(() => {
+    const get_reviews = async (teacherId) => {
+      if (!teacherId) return;
+      const url = "http://localhost:5000/reviews/" + teacherId;
+      const res = await axios.get(url);
+      setItems(res.data);
+    };
 
+    get_reviews(selected);
+  }, [selected]);
 
-        </Grid.Container>
-    );
+  useEffect(() => {}, [items]);
+
+  return (
+    <Grid.Container gap={2}>
+      {items &&
+        items.map((el) => (
+          <Grid key={el._id} xs={4}>
+            <Card>
+              <Card.Body>
+                <Text>{el.review}</Text>
+              </Card.Body>
+            </Card>
+          </Grid>
+        ))}
+    </Grid.Container>
+  );
 }
