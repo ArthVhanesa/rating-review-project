@@ -12,7 +12,7 @@ export default function AddFacultyModal() {
   };
 
   const handleSubmit = async () => {
-    const url = "http://localhost:5000/teacher/";
+    const url = "https://rating-review-api.cyclic.app/teacher/";
     const res = await axios.post(
       url,
       {

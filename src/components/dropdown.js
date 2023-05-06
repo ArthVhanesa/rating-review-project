@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function SelectDropDown({ selected, setSelected }) {
   const [displayName, setDisplayName] = useState("");
-  const url = "http://localhost:5000/teacher";
+  const url = "https://rating-review-api.cyclic.app/teacher";
   const [items, setItems] = useState([]);
 
   useEffect(() => {

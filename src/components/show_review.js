@@ -6,7 +6,7 @@ export default function ShowReview({ selected, items, setItems }) {
   useEffect(() => {
     const get_reviews = async (teacherId) => {
       if (!teacherId) return;
-      const url = "http://localhost:5000/reviews/" + teacherId;
+      const url = "https://rating-review-api.cyclic.app/reviews/" + teacherId;
       const res = await axios.get(url);
       setItems(res.data);
     };
@@ -14,7 +14,7 @@ export default function ShowReview({ selected, items, setItems }) {
     get_reviews(selected);
   }, [selected]);
 
-  useEffect(() => {}, [items]);
+  useEffect(() => { }, [items]);
 
   return (
     <Grid.Container gap={2}>

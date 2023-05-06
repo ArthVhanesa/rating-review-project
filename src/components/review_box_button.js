@@ -12,7 +12,7 @@ export default function ReviewBoxButton({
   const [reviewText, setReviewText] = useState("");
 
   const handleSubmit = async () => {
-    const url = "http://localhost:5000/reviews";
+    const url = "https://rating-review-api.cyclic.app/reviews";
     const newReview = {
       teacherId: selected,
       review: reviewText,
