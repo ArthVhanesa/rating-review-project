@@ -41,9 +41,9 @@ export default function AddFacultyModal() {
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
-            Welcome to
+            Add faculty name
             <Text b size={18}>
-              NextUI
+
             </Text>
           </Text>
         </Modal.Header>
